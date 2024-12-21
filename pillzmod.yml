@@ -1,0 +1,9 @@
+file_format: "1"
+id: pillzmod
+name: Pillz Mod
+type: shield
+url: https://github.com/dcpedit/pillzmod
+requires: [pillbug]
+features:
+  - keys
+  - studio
