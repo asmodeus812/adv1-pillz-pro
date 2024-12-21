@@ -9,7 +9,7 @@ SELINUX1 := :z
 SELINUX2 := ,z
 endif
 
-.PHONY: all left clean_firmware clean_image clean
+.PHONY: all clean_firmware clean_image clean
 
 all:
 	$(shell bin/get_version.sh >> /dev/null)
@@ -20,18 +20,6 @@ all:
 		-e TIMESTAMP=$(TIMESTAMP) \
 		-e COMMIT=$(COMMIT) \
 		-e BUILD_RIGHT=true \
-		zmk
-	git checkout config/version.dtsi
-
-left:
-	$(shell bin/get_version.sh >> /dev/null)
-	$(DOCKER) build --tag zmk --file Dockerfile .
-	$(DOCKER) run --rm -it --name zmk \
-		-v $(PWD)/firmware:/app/firmware$(SELINUX1) \
-		-v $(PWD)/config:/app/config:ro$(SELINUX2) \
-		-e TIMESTAMP=$(TIMESTAMP) \
-		-e COMMIT=$(COMMIT) \
-		-e BUILD_RIGHT=false \
 		zmk
 	git checkout config/version.dtsi
 

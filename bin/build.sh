@@ -7,7 +7,7 @@ TIMESTAMP="${TIMESTAMP:-$(date -u +"%Y%m%d%H%M")}"
 COMMIT="${COMMIT:-$(echo xxxxxx)}"
 
 # West Build (left)
-west build -s zmk/app -d build/left -b adv360_left -- -DZMK_CONFIG="${PWD}/config"
+west build -s zmk/app -d build -b adv360_left -- -DZMK_CONFIG="${PWD}/config"
 # Adv360 Left Kconfig file
 grep -vE '(^#|^$)' build/left/zephyr/.config
 # Rename zmk.uf2
