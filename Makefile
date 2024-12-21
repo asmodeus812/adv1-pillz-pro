@@ -19,9 +19,7 @@ all:
 		-v $(PWD)/config:/app/config:ro$(SELINUX2) \
 		-e TIMESTAMP=$(TIMESTAMP) \
 		-e COMMIT=$(COMMIT) \
-		-e BUILD_RIGHT=true \
 		zmk
-	git checkout config/version.dtsi
 
 clean_firmware:
 	rm -f firmware/*.uf2
