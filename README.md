@@ -10,4 +10,4 @@ The default overlay supports the factory default keyboard layout which is 'US In
 
 Following the above link select the latest successful run and then click on the "firmware" text to download the "firmware.zip" which contains all the supported boards binary files.
 
-A guild to flashing the firmware images can be found in the following links to dcpedit's github page for both the [blackpill](https://github.com/dcpedit/pillzmod?tab=readme-ov-file#vial-firmware-for-blackpill) and the [Pill bug](https://github.com/dcpedit/pillzmod?tab=readme-ov-file#zmk-firmware-for-pill-bug).
+A guild to flashing the firmware images can be found in the following links to dcpedit's github page for both
