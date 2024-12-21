@@ -4,7 +4,7 @@
 if SHIELD_PILLZMOD_PRO
 
 config ZMK_KEYBOARD_NAME
-    default "Kinesis Advantage Pro 1"
+    default "Advantage 1"
 
 config SPI
     default y

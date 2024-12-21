@@ -1,6 +1,6 @@
 file_format: "1"
 id: pillzmod_pro
-name: Kinesis Advantage Pro 1
+name: Advantage 1
 type: shield
 requires: [pro_micro]
 features:
