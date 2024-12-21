@@ -4,9 +4,9 @@
 if SHIELD_PILLZMOD_PRO
 
 config ZMK_KEYBOARD_NAME
-    default "Pillz Mod Pro"
+    default "Kinesis Advantage Pro 1"
 
 config SPI
     default y
-    
+
 endif
