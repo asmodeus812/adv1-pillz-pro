@@ -30,21 +30,21 @@
         led-caps = &led_0;
         led-num = &led_1;
         led-scroll = &led_2;
-  };
+    };
 
-  leds {
-    compatible = "gpio-leds";
-    status = "okay";
-    led_0: led_0 {
-            gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+    leds {
+        compatible = "gpio-leds";
+        status = "okay";
+        led_0: led_0 {
+                gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        };
+        led_1: led_1 {
+                gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        };
+        led_2: led_2 {
+                gpios = <&gpio1 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        };
     };
-    led_1: led_1 {
-            gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-    };
-    led_2: led_2 {
-            gpios = <&gpio1 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-    };
-  };
 
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
@@ -67,6 +67,7 @@ RC( 0, 3) RC( 1, 3) RC( 2, 3) RC( 3, 3) RC( 4, 3) RC( 5, 3)                     
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
+        wakeup-source;
 
         col-gpios
             = <&shifter 0 GPIO_ACTIVE_HIGH>
@@ -95,5 +96,10 @@ RC( 0, 3) RC( 1, 3) RC( 2, 3) RC( 3, 3) RC( 4, 3) RC( 5, 3)                     
             , <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
+    };
+
+    soft_off_wakers {
+        compatible = "zmk,soft-off-wakeup-sources";
+        wakeup-sources = <&kscan0>;
     };
 };

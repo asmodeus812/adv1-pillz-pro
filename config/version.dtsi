@@ -3,5 +3,5 @@ macro_ver: macro_ver {
 compatible = "zmk,behavior-macro";
 label = "macro_ver";
 #binding-cells = <0>;
-bindings = <&kp N2>, <&kp N0>, <&kp N2>, <&kp N4>, <&kp N1>, <&kp N2>, <&kp N2>, <&kp N1>, <&kp MINUS>, <&kp M>, <&kp A>, <&kp I>, <&kp N>, <&kp MINUS>, <&kp E>, <&kp N5>, <&kp N9>, <&kp N2>, <&kp N5>, <&kp F>, <&kp N8>, <&kp RET>;
+bindings = <&kp N2>, <&kp N0>, <&kp N2>, <&kp N4>, <&kp N1>, <&kp N2>, <&kp N2>, <&kp N2>, <&kp MINUS>, <&kp M>, <&kp A>, <&kp I>, <&kp N>, <&kp MINUS>, <&kp N3>, <&kp N7>, <&kp F>, <&kp C>, <&kp D>, <&kp C>, <&kp N2>, <&kp RET>;
 };
