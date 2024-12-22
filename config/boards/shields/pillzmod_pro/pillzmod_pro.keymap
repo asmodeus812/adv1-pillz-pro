@@ -98,7 +98,7 @@
 
         default_layer {
             bindings = <
-                &kp ESC    &kp F1     &kp F2      &kp F3       &kp F4       &kp F5  &kp F6 &kp F7 &kp F8           &kp F9 &kp F10 &kp F11 &kp F12 &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK &kp C_AL_CALC &kp C_AL_TEXT_EDITOR
+                &kp ESC    &kp F1     &kp F2      &kp F3       &kp F4       &kp F5  &kp F6 &kp F7 &kp F8           &kp F9 &kp F10 &kp F11 &kp F12 &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK &kp C_AL_CALC &none
                 &kp PSCRN  &kp N1     &kp N2      &kp N3       &kp N4       &kp N5                                                      &kp N6     &kp N7       &kp N8     &kp N9      &kp N0        &kp SLCK
                 &kp CAPS   &kp Q      &kp W       &kp E        &kp R        &kp T                                                       &kp Y      &kp U        &kp I      &kp O       &kp P         &kp DEL
                 &kp TAB    &kp A      &kp S       &kp D        &hml LSHFT F &kp G                                                       &kp H      &hmr RSHFT J &kp K      &kp L       &kp SEMI      &kp SQT
@@ -127,14 +127,14 @@
         mod {
             bindings = <
                 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                             &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                        &bt BT_SEL 0 &bt BT_SEL 1  &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_CLR
-                &bootloader &none        &none        &none        &none        &none                               &none        &none         &none        &none        &none        &bootloader
-                &none       &none        &none        &none        &none        &none                               &none        &none         &none        &none        &none        &none
-                &none       &none        &none        &none        &none        &none                               &none        &none         &none        &none        &none        &none
-                            &none        &none        &none        &none                                                         &none         &none        &none        &none
+                &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                        &bt BT_DISC 0 &bt BT_DISC 1  &bt BT_DISC 2 &bt BT_DISC 3 &bt BT_DISC 4 &bt BT_CLR_ALL
+                &bootloader &none        &none        &none        &none        &none                               &none         &none          &none         &none         &none         &bootloader
+                &none       &none        &none        &none        &none        &none                               &none         &none          &none         &none         &none         &none
+                &none       &none        &none        &none        &none        &none                               &none         &none          &none         &none         &none         &none
+                            &none        &none        &none        &none                                                          &none          &none         &none         &none
                                                                                 &none  &none     &none  &none
                                                                                        &none     &none
-                                                                        &none  &none   &none     &none  &none  &none
+                                                                         &none  &none  &none     &none  &none  &none
                                                                                     &none   &none   &none
             >;
         };
