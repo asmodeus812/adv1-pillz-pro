@@ -4,6 +4,7 @@
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
 #include <zmk/events/hid_indicators_changed.h>
+#include <zmk/events/keycode_state_changed.h>
 #include <zmk/events/layer_state_changed.h>
 #include <zmk/hid_indicators.h>
 
@@ -12,12 +13,17 @@
 // GPIO-based LED device
 static const struct device *led_dev = DEVICE_DT_GET(LED_GPIO_NODE_ID);
 
+static inline bool is_mod_raw(uint32_t keycode) {
+    return (keycode >= HID_USAGE_KEY_KEYBOARD_LEFTCONTROL && keycode <= HID_USAGE_KEY_KEYBOARD_RIGHT_GUI);
+}
+
 static int led_indication_listener_cb(const zmk_event_t *eh) {
-    const struct zmk_layer_state_changed *ev = as_zmk_layer_state_changed(eh);
+    const struct zmk_layer_state_changed *el = as_zmk_layer_state_changed(eh);
+    const struct zmk_keycode_state_changed *ek = as_zmk_keycode_state_changed(eh);
     zmk_hid_indicators_t flags = zmk_hid_indicators_get_current_profile();
     unsigned int capsBit = 1 << (HID_USAGE_LED_CAPS_LOCK - 1);
     unsigned int numBit = 1 << (HID_USAGE_LED_NUM_LOCK - 1);
-    // unsigned int scrollBit = 1 << (HID_USAGE_LED_SCROLL_LOCK - 1);
+    unsigned int shiftBit  = 1 << (HID_USAGE_LED_SHIFT - 1);
 
     if (flags & capsBit) {
         led_on(led_dev, DT_NODE_CHILD_IDX(DT_ALIAS(led_caps)));
@@ -31,13 +37,9 @@ static int led_indication_listener_cb(const zmk_event_t *eh) {
         led_off(led_dev, DT_NODE_CHILD_IDX(DT_ALIAS(led_num)));
     }
 
-    // if (flags & scrollBit) {
-    //     led_on(led_dev, DT_NODE_CHILD_IDX(DT_ALIAS(led_scroll)));
-    // } else {
-    //     led_off(led_dev, DT_NODE_CHILD_IDX(DT_ALIAS(led_scroll)));
-    // }
-
-    if (ev->layer != 0 && ev->state) {
+    if (ek && ek->state && is_mod_raw(ek->keycode)) {
+        led_on(led_dev, DT_NODE_CHILD_IDX(DT_ALIAS(led_scroll)));
+    } else if (el && el->layer != 0 && el->state) {
         led_on(led_dev, DT_NODE_CHILD_IDX(DT_ALIAS(led_scroll)));
     } else {
         led_off(led_dev, DT_NODE_CHILD_IDX(DT_ALIAS(led_scroll)));
@@ -48,6 +50,7 @@ static int led_indication_listener_cb(const zmk_event_t *eh) {
 
 ZMK_LISTENER(led_indicators_listener, led_indication_listener_cb);
 ZMK_SUBSCRIPTION(led_indicators_listener, zmk_layer_state_changed);
+ZMK_SUBSCRIPTION(led_indicators_listener, zmk_keycode_state_changed);
 ZMK_SUBSCRIPTION(led_indicators_listener, zmk_hid_indicators_changed);
 
 static int leds_init(const struct device *device) {
