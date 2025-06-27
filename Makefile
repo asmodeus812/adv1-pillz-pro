@@ -13,18 +13,18 @@ endif
 
 all:
 	$(shell bin/get_version.sh >> /dev/null)
-	$(DOCKER) build --tag zmk --file Dockerfile .
-	$(DOCKER) run --rm -it --name zmk \
+	$(DOCKER) build --tag pillzmod_pro --file Dockerfile .
+	$(DOCKER) run --rm -it --name pillzmod_pro \
 		-v $(PWD)/firmware:/app/firmware$(SELINUX1) \
 		-v $(PWD)/config:/app/config:ro$(SELINUX2) \
 		-e TIMESTAMP=$(TIMESTAMP) \
 		-e COMMIT=$(COMMIT) \
-		zmk
+		pillzmod_pro
 
 clean_firmware:
 	rm -f firmware/*.uf2
 
 clean_image:
-	$(DOCKER) image rm zmk docker.io/zmkfirmware/zmk-build-arm:stable
+	$(DOCKER) image rm pillzmod_pro docker.io/zmkfirmware/zmk-build-arm:stable
 
 clean: clean_firmware clean_image
