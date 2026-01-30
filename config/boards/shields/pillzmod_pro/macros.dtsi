@@ -58,20 +58,14 @@ macro_fatarrow: macro_fatarrow {
     compatible = "zmk,behavior-macro";
     label = "macro_fatarrow";
     #binding-cells = <0>;
-    bindings = <
-        &kp EQUAL
-        &kp GT
-    >;
+    bindings = <&kp EQUAL>, <&kp GT>, <&kp SPACE>, <&kp LBRC>, <&kp RBRC>, <&kp LEFT>;
     wait-ms = <10>;
 };
 macro_arrow: macro_arrow {
     compatible = "zmk,behavior-macro";
     label = "macro_arrow";
     #binding-cells = <0>;
-    bindings = <
-        &kp MINUS
-        &kp GT
-    >;
+    bindings = <&kp MINUS>, <&kp GT>, <&kp SPACE>, <&kp LBRC>, <&kp RBRC>, <&kp LEFT>;
     wait-ms = <10>;
 };
 macro_kinesis: macro_kinesis {
