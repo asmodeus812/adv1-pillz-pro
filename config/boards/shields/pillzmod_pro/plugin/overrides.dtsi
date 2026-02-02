@@ -1,0 +1,14 @@
+&sk {
+    quick-release;
+    release-after-ms = <500>;
+    /delete-property/ ignore-modifiers;
+};
+
+&soft_off {
+    hold-time-ms = <2000>;
+};
+
+&caps_word {
+    continue-list = <UNDERSCORE SEMI PIPE AMPS MINUS BACKSPACE DELETE LSHFT RSHFT>;
+};
+

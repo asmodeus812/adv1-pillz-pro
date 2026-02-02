@@ -1,5 +1,6 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1400  // default: 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 40    // default: 10
+#define USER_CONFIG_DEFAULT_KEYMAP 1        // default: keymaps
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/backlight.h>
@@ -7,131 +8,14 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
-
-#define STRINGIFY(x) #x
-#define EXPAND_AND_STRINGIFY(x) STRINGIFY(x)
-
-#define KEYS_NONE
-#define HYPER LS(LC(LA(LGUI)))
-
-#define KEYS_LEFT 0  1  2  3  4  5  6 7 8 \
-                  18 19 20 21 22 23 \
-                  30 31 32 33 34 35 \
-                  42 43 44 45 46 47 \
-                  54 55 56 57 58 59 \
-                  66 67 68 69 \
-                  74 75 \
-                  78 \
-                  80 81 82 \
-
-#define KEYS_RIGHT 9  10 11 12 13 14 15 16 17 \
-                   24 25 26 27 28 29 \
-                   36 37 38 39 40 41 \
-                   48 49 50 51 52 53 \
-                   60 61 62 63 64 65 \
-                   70 71 72 73 \
-                   76 77 \
-                   79 \
-                   83 84 85 \
-
-#define THUMBS_LEFT 74 75 78 80 81 82
-
-#define THUMBS_RIGHT 76 77 79 83 84 85
-
-#define THUMBS THUMBS_LEFT THUMBS_RIGHT
-
-#define MORPH(ID, LOWER, UPPER, MRPH) \
-    ID: mod_morph_##ID { \
-        compatible = "zmk,behavior-mod-morph"; \
-        #binding-cells = <0>; \
-        bindings = <&kp LOWER>, <&kp UPPER>; \
-        mods = <(MRPH)>; \
-    };
-
-#define SUPER(ID, FIRST, SECOND, TERM, QTAP, RPI, KEYS, FLAVE, ...) \
-    ID: mod_tap_##ID { \
-        compatible = "zmk,behavior-hold-tap"; \
-        quick_tap_ms = <QTAP>; \
-        tapping-term-ms = <TERM>; \
-        flavor = FLAVE; \
-        #binding-cells = <2>; \
-        bindings = <&FIRST>, <&SECOND>; \
-        require-prior-idle-ms = <RPI>; \
-        hold-trigger-key-positions = <KEYS>; \
-        hold-while-undecided-linger; \
-        __VA_ARGS__ \
-    };
-
-#define PROFILE(ID, INDEX, LAYER_ON, LAYER_OFF) \
-    ID: bt_profile_##ID { \
-        compatible = "zmk,behavior-macro"; \
-        #binding-cells = <0>; \
-        wait-ms = <0>; \
-        tap-ms  = <0>; \
-        bindings = <&bt BT_SEL INDEX>, <&tog_off LAYER_OFF>, <&tog_on LAYER_ON> ; \
-    };
-
-
-#define L_OS_WIN  1
-#define L_OS_MAC  2
-
-&sk {
-    quick-release;
-    release-after-ms = <500>;
-    /delete-property/ ignore-modifiers;
-};
-
-&soft_off {
-    hold-time-ms = <2000>;
-};
-
-&caps_word {
-    continue-list = <UNDERSCORE SEMI PIPE AMPS MINUS BACKSPACE DELETE LSHFT RSHFT>;
-};
+#include "plugin/overrides.dtsi"
+#include "keys.dtsi"
 
 / {
     behaviors {
-        tog_on: toggle_layer_on_only {
-            compatible = "zmk,behavior-toggle-layer";
-            display-name = "Toggle Layer On";
-            #binding-cells = <1>;
-            toggle-mode = "on";
-        };
-
-        tog_off: toggle_layer_off_only {
-            compatible = "zmk,behavior-toggle-layer";
-            display-name = "Toggle Layer Off";
-            #binding-cells = <1>;
-            toggle-mode = "off";
-        };
-
-        SUPER(lcwm, mo, caps_word, 135, 0,   0, KEYS_NONE, "hold-preferred")
-        SUPER(lcwp, kp, caps_word, 135, 0,   0, KEYS_NONE, "hold-preferred")
-
-        SUPER(kpp, kp, kp, 135, 165, 25, KEYS_NONE,  "hold-preferred")
-        SUPER(lkp, mo, kp, 135, 165, 25, KEYS_NONE,  "tap-preferred")
-
-        SUPER(kpr, kp, kp, 130, 165, 25, KEYS_LEFT,  "balanced")
-        SUPER(kpl, kp, kp, 130, 165, 25, KEYS_RIGHT, "balanced")
-
-        MORPH(one,   EXCL,   N1, MOD_LSFT|MOD_RSFT)
-        MORPH(two,   AT,     N2, MOD_LSFT|MOD_RSFT)
-        MORPH(three, HASH,   N3, MOD_LSFT|MOD_RSFT)
-        MORPH(four,  DOLLAR, N4, MOD_LSFT|MOD_RSFT)
-        MORPH(five,  PRCNT,  N5, MOD_LSFT|MOD_RSFT)
-        MORPH(six,   CARET,  N6, MOD_LSFT|MOD_RSFT)
-        MORPH(seven, AMPS,   N7, MOD_LSFT|MOD_RSFT)
-        MORPH(eight, ASTRK,  N8, MOD_LSFT|MOD_RSFT)
-        MORPH(nine,  LPAR,   N9, MOD_LSFT|MOD_RSFT)
-        MORPH(zero,  RPAR,   N0, MOD_LSFT|MOD_RSFT)
-
-        PROFILE(pfl0, 0, L_OS_MAC, L_OS_WIN)
-        PROFILE(pfl1, 1, L_OS_MAC, L_OS_WIN)
-        PROFILE(pfl2, 2, L_OS_WIN, L_OS_MAC)
-        PROFILE(pfl3, 3, L_OS_WIN, L_OS_MAC)
-        PROFILE(pfl4, 4, L_OS_WIN, L_OS_MAC)
-
-        #include "macros.dtsi"
+        #include "plugin/definitions.dtsi"
+        #include "plugin/declarations.dtsi"
+        #include "plugin/macros.dtsi"
         #include "version.dtsi"
     };
 

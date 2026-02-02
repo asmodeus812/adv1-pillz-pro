@@ -1,0 +1,28 @@
+SUPER(lcwm, mo, caps_word, 135, 0,   0, KEYS_NONE, "hold-preferred")
+SUPER(lcwp, kp, caps_word, 135, 0,   0, KEYS_NONE, "hold-preferred")
+
+SUPER(kpp, kp, kp, 135, 165, 25, KEYS_NONE,  "hold-preferred")
+SUPER(lkp, mo, kp, 135, 165, 25, KEYS_NONE,  "tap-preferred")
+
+SUPER(kpr, kp, kp, 130, 165, 25, KEYS_LEFT,  "balanced")
+SUPER(kpl, kp, kp, 130, 165, 25, KEYS_RIGHT, "balanced")
+
+MORPH(one,   EXCL,   N1, MOD_LSFT|MOD_RSFT)
+MORPH(two,   AT,     N2, MOD_LSFT|MOD_RSFT)
+MORPH(three, HASH,   N3, MOD_LSFT|MOD_RSFT)
+MORPH(four,  DOLLAR, N4, MOD_LSFT|MOD_RSFT)
+MORPH(five,  PRCNT,  N5, MOD_LSFT|MOD_RSFT)
+MORPH(six,   CARET,  N6, MOD_LSFT|MOD_RSFT)
+MORPH(seven, AMPS,   N7, MOD_LSFT|MOD_RSFT)
+MORPH(eight, ASTRK,  N8, MOD_LSFT|MOD_RSFT)
+MORPH(nine,  LPAR,   N9, MOD_LSFT|MOD_RSFT)
+MORPH(zero,  RPAR,   N0, MOD_LSFT|MOD_RSFT)
+
+PROFILE(pfl0, 0, L_OS_MAC, L_OS_WIN)
+PROFILE(pfl1, 1, L_OS_MAC, L_OS_WIN)
+PROFILE(pfl2, 2, L_OS_WIN, L_OS_MAC)
+PROFILE(pfl3, 3, L_OS_WIN, L_OS_MAC)
+PROFILE(pfl4, 4, L_OS_WIN, L_OS_MAC)
+
+TOGGLE(tog_on, on)
+TOGGLE(tog_off, off)

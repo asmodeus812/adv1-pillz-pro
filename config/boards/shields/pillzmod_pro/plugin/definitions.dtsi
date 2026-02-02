@@ -1,0 +1,47 @@
+#define STRINGIFY(x) #x
+#define EXPAND_AND_STRINGIFY(x) STRINGIFY(x)
+
+#define MORPH(ID, LOWER, UPPER, MRPH) \
+    ID: mod_morph_##ID { \
+        compatible = "zmk,behavior-mod-morph"; \
+        #binding-cells = <0>; \
+        bindings = <&kp LOWER>, <&kp UPPER>; \
+        mods = <(MRPH)>; \
+    };
+
+#define SUPER(ID, FIRST, SECOND, TERM, QTAP, RPI, KEYS, FLAVE, ...) \
+    ID: mod_tap_##ID { \
+        compatible = "zmk,behavior-hold-tap"; \
+        quick_tap_ms = <QTAP>; \
+        tapping-term-ms = <TERM>; \
+        flavor = FLAVE; \
+        #binding-cells = <2>; \
+        bindings = <&FIRST>, <&SECOND>; \
+        require-prior-idle-ms = <RPI>; \
+        hold-trigger-key-positions = <KEYS>; \
+        hold-while-undecided-linger; \
+        __VA_ARGS__ \
+    };
+
+#define PROFILE(ID, INDEX, LAYER_ON, LAYER_OFF) \
+    ID: bt_profile_##ID { \
+        compatible = "zmk,behavior-macro"; \
+        #binding-cells = <0>; \
+        wait-ms = <0>; \
+        tap-ms  = <0>; \
+        bindings = <&bt BT_SEL INDEX>, <&tog_off LAYER_OFF>, <&tog_on LAYER_ON> ; \
+    };
+
+#define TOGGLE(ID, KIND) \
+    ID: toggle_layer_##KIND##_only { \
+        compatible = "zmk,behavior-toggle-layer"; \
+        display-name = "Toggle action KIND"; \
+        #binding-cells = <1>; \
+        toggle-mode = #KIND; \
+    };
+
+#define L_OS_WIN  1
+#define L_OS_MAC  2
+#define L_OS_LIN  3
+
+#define HYPER LS(LC(LA(LGUI)))
