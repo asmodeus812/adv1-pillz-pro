@@ -3,6 +3,7 @@ SUPER(lcwp, kp, caps_word, 135, 0,   0, KEYS_NONE, "hold-preferred")
 
 SUPER(kpp, kp, kp, 135, 165, 25, KEYS_NONE,  "hold-preferred")
 SUPER(lkp, mo, kp, 135, 165, 25, KEYS_NONE,  "tap-preferred")
+SUPER(lsk, mo, sk, 135, 165, 25, KEYS_NONE,  "tap-preferred")
 
 SUPER(kpr, kp, kp, 130, 165, 25, KEYS_LEFT,  "balanced")
 SUPER(kpl, kp, kp, 130, 165, 25, KEYS_RIGHT, "balanced")
