@@ -32,7 +32,7 @@
                              &kp TAB    &kp GRAVE &kp BSLH &kp EQUAL                                                                               &kp MINUS &kp LBKT   &kp RBKT        &kp SQT
                                                                                     &kpp LGUI DEL  &mo 4       &mo 4        &lcwp RALT 0
                                                                                                    &lkp 3 END  &lkp 3 PG_UP
-                                                                   &kpl LSHFT BSPC &kpp LCTRL ESC &lkp 6 HOME  &lkp 6 PG_DN &kpp RCTRL ENTER &kpr RSHFT SPACE
+                                                                   &kpl LSHFT BSPC &kpp LCTRL ESC  &lkp 6 HOME &lkp 6 PG_DN &kpp RCTRL ENTER &kpr RSHFT SPACE
                                                                                                    &kp A  &kp B &kp C
             >;
         };
@@ -108,12 +108,12 @@
         };
         win_nav {
             bindings = <
-        &trans           &trans               &trans             &trans              &trans          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans          &trans          &trans         &trans          &trans
-        &kp F11          &kp F1               &kp F2             &kp F3              &kp F4          &kp F5                                                  &kp F6       &kp F7          &kp F8          &kp F9         &kp F10         &kp F12
-        &macro_backtick  &kp LA(F4)           &Win_Select_Word   &macro_kill_to_end  &kp LC(BSPC)    &kp LC(HOME)                                            &kp RC(LEFT) &kp RC(DOWN)    &kp RC(UP)      &kp RC(RIGHT)  &none           &macro_block
-        &macro_quotes    &macro_kill_to_start &macro_select_line &macro_kill_line    &kp LC(DEL)     &kp LC(A)                                               &kp LEFT     &kp DOWN        &kp UP          &kp RIGHT      &none           &macro_dquotes
-        &macro_parens    &Win_Undo            &Win_Cut           &Win_Copy           &Win_Paste      &kp LC(END)                                             &kp HOME     &kp PG_DN       &kp PG_UP       &kp END        &none           &macro_braces
-                         &none                &macro_fatarrow    &macro_join_pln     &macro_join_nln                                                                      &macro_open_dln &macro_open_uln &macro_arrow   &none
+        &trans           &trans               &trans             &trans              &trans          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans          &trans          &trans         &trans                &trans
+        &kp F11          &kp F1               &kp F2             &kp F3              &kp F4          &kp F5                                                  &kp F6       &kp F7          &kp F8          &kp F9         &kp F10               &kp F12
+        &macro_backtick  &kp LA(F4)           &win_select_word   &win_select_to_end  &kp LC(BSPC)    &kp LC(HOME)                                            &kp RC(LEFT) &kp RC(DOWN)    &kp RC(UP)      &kp RC(RIGHT)  &win_select_pgph      &win_block
+        &macro_quotes    &win_select_to_start &win_select_line   &win_kill_line      &kp LC(DEL)     &kp LC(A)                                               &kp LEFT     &kp DOWN        &kp UP          &kp RIGHT      &win_select_doc_start &macro_dquotes
+        &macro_parens    &win_undo            &win_cut           &win_copy           &win_paste      &kp LC(END)                                             &kp HOME     &kp PG_DN       &kp PG_UP       &kp END        &win_select_doc_end   &macro_braces
+                         &none                &macro_fatarrow    &win_join_pln       &win_join_nln                                                                        &win_open_dln   &win_open_uln   &macro_arrow   &none
                                                                                                                         &trans  &trans  &trans  &trans
                                                                                                                                 &trans  &trans
                                                                                                                  &trans &trans  &trans  &trans  &trans &trans
@@ -122,12 +122,12 @@
         };
         mac_nav {
             bindings = <
-        &trans           &trans               &trans             &trans              &trans          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans          &trans          &trans         &trans          &trans
-        &kp F11          &kp F1               &kp F2             &kp F3              &kp F4          &kp F5                                                  &kp F6       &kp F7          &kp F8          &kp F9         &kp F10         &kp F12
-        &macro_backtick  &kp LG(Q)            &Mac_Select_Word   &macro_kill_to_end  &kp LA(BSPC)    &kp LG(UP)                                              &kp RA(LEFT) &kp RA(DOWN)    &kp RA(UP)      &kp RA(RIGHT)  &none           &macro_block
-        &macro_quotes    &macro_kill_to_start &macro_select_line &macro_kill_line    &kp LA(DEL)     &kp LG(A)                                               &kp LEFT     &kp DOWN        &kp UP          &kp RIGHT      &none           &macro_dquotes
-        &macro_parens    &Mac_Undo            &Mac_Cut           &Mac_Copy           &Mac_Paste      &kp LG(DOWN)                                            &kp RG(LEFT) &kp PG_DN       &kp PG_UP       &kp RG(RIGHT)  &none           &macro_braces
-                         &none                &macro_fatarrow    &macro_join_pln     &macro_join_nln                                                                      &macro_open_dln &macro_open_uln &macro_arrow   &none
+        &trans           &trans               &trans             &trans              &trans          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans          &trans          &trans         &trans                &trans
+        &kp F11          &kp F1               &kp F2             &kp F3              &kp F4          &kp F5                                                  &kp F6       &kp F7          &kp F8          &kp F9         &kp F10               &kp F12
+        &macro_backtick  &kp LG(Q)            &mac_select_word   &mac_select_to_end  &kp LA(BSPC)    &kp LG(UP)                                              &kp RA(LEFT) &kp RA(DOWN)    &kp RA(UP)      &kp RA(RIGHT)  &mac_select_pgph      &mac_block
+        &macro_quotes    &mac_select_to_start &mac_select_line   &mac_kill_line      &kp LA(DEL)     &kp LG(A)                                               &kp LEFT     &kp DOWN        &kp UP          &kp RIGHT      &mac_select_doc_start &macro_dquotes
+        &macro_parens    &mac_undo            &mac_cut           &mac_copy           &mac_paste      &kp LG(DOWN)                                            &kp RG(LEFT) &kp PG_DN       &kp PG_UP       &kp RG(RIGHT)  &mac_select_doc_end   &macro_braces
+                         &none                &macro_fatarrow    &mac_join_pln       &mac_join_nln                                                                        &mac_open_dln   &mac_open_uln   &macro_arrow   &none
                                                                                                                         &trans  &trans  &trans  &trans
                                                                                                                                 &trans  &trans
                                                                                                                  &trans &trans  &trans  &trans  &trans &trans
